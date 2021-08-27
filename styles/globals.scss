@@ -2,10 +2,34 @@
 
 html,
 body {
-  padding: 0;
-  margin: 0;
+  width: 100%;
   font-family: "Kumbh Sans", sans-serif;
   font-weight: var(--paragraph-font);
+
+  p {
+    color: var(--grey);
+  }
+}
+
+header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 46px;
+  border: 1px solid red;
+  .header__Image1 {
+    position: absolute;
+    top: -100px;
+    z-index: 1;
+  }
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: var(--header-font);
+  line-height: 48px;
+  color: var(--slategrey);
 }
 
 a {
@@ -14,7 +38,8 @@ a {
 }
 
 * {
-  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 h1,
