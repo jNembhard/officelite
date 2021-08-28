@@ -16,10 +16,14 @@
     align-items: center;
     justify-content: center;
     margin: 0 24px 0;
+    line-height: 26px;
 
     .intro__image {
       margin-top: -80px;
       margin: -80px 80px 64px;
+    }
+    .mod {
+      margin-top: -80px;
     }
 
     h1 {
@@ -34,7 +38,18 @@
   }
 }
 
-.button {
+.p__mod {
+  color: var(--slategrey);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home__button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -43,47 +58,76 @@
   background-color: var(--midblue);
   color: var(--white);
   margin-top: 24px;
-  border-radius: 40px;
+  border-radius: 60px;
   cursor: pointer;
-  .button__softblue {
+  margin-bottom: 100px;
+  font-weight: var(--header-font);
+
+  &:hover {
     background-color: var(--softblue);
   }
 }
 
-.card {
+.countdown {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  .card__basic {
-    width: 327px;
-    height: 508px;
-    // background-color: var(--midblue);
-    margin: 32px 25px 32px;
-    text-align: center;
-
-    h3 {
-      margin: 40px 146px 40px;
+  position: relative;
+  p {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: var(--header-font);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    line-height: 48px;
+    span {
+      color: var(--midblue);
+      padding-left: 5px;
     }
+  }
+  .countdown__map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    h1 {
-      font-size: 52px;
-      margin-bottom: 8px;
+    .countdown__color {
+      background-color: var(--softblue);
     }
+  }
+  .countdown__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 171px;
+    height: 56px;
+    background-color: var(--midblue);
+    color: white;
+    font-weight: var(--header-font);
+    margin: 40px 0 100px;
+    border-radius: 40px;
 
-    p {
-      font-size: 16px;
-      margin-bottom: 56px;
-      color: var(--slategrey);
+    &:hover {
+      background-color: var(--softblue);
     }
+  }
+}
 
-    ul {
-      color: var(--grey);
-      li {
-        list-style-type: none;
-        line-height: 28px;
-      }
-    }
+.footer {
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1248px;
+    background-color: var(--darkgrey);
+    background-image: url("/assets/home/bg-pattern-footer.svg");
+    background-size: cover;
+    background-position: center 132px;
+    background-repeat: no-repeat;
+    z-index: -1;
   }
 }
