@@ -80,6 +80,7 @@ export default function Home() {
                 key={count.id}
                 number={count.number}
                 unit={count.unit}
+                color="grey"
               />
             ))}
           </div>

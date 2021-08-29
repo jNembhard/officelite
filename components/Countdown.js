@@ -1,7 +1,7 @@
-export default function Countdown({ number, unit }) {
+export default function Countdown({ number, unit, color }) {
   return (
     <div className="count">
-      <div className="count__block">
+      <div className={`count__block ${color}`}>
         <p>
           <span>{number} </span>
           {unit}
@@ -15,11 +15,28 @@ export default function Countdown({ number, unit }) {
           text-align: center;
           margin: 18px 8px 0;
 
+          .blue {
+            background-color: mix(white, #829cff, $weight: 80%);
+            p {
+              span {
+                color: var(--midblue);
+              }
+            }
+          }
+
+          .grey {
+            background-color: var(--slategrey);
+            p {
+              span {
+                color: var(--white);
+              }
+            }
+          }
+
           .count__block {
             border-radius: 5px;
             width: 72px;
             height: 92px;
-            background-color: var(--slategrey);
 
             p {
               margin-top: 16px;
@@ -34,7 +51,6 @@ export default function Countdown({ number, unit }) {
                 font-size: 32px;
                 font-weight: var(--header-font);
                 line-height: 48px;
-                color: white;
                 padding-left: 0;
               }
             }
