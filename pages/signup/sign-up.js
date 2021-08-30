@@ -5,7 +5,7 @@ import Header from "../../components/Header";
 import styles from "../../styles/Home.module.scss";
 import Countdown from "../../components/Countdown";
 import countdown_data from "../../components/countdown_data";
-import SignList from "../../components/SignList";
+import Form from "../../components/Form";
 
 export default function SignUp() {
   return (
@@ -55,7 +55,7 @@ export default function SignUp() {
             {/* <div className={styles.footer} /> */}
           </section>
           <section>
-            <SignList />
+            <Form />
           </section>
         </main>
         <style jsx>{`
