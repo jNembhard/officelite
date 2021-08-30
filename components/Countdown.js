@@ -1,9 +1,14 @@
+import { initializeClock } from "./initializeClock";
+
 export default function Countdown({ number, unit, color }) {
+  const deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
+  // const initClock = initializeClock("count", deadline);
+
   return (
     <div className="count">
       <div className={`count__block ${color}`}>
         <p>
-          <span>{number} </span>
+          <span className={unit}>{number} </span>
           {unit}
         </p>
       </div>
