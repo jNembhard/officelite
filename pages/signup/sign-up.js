@@ -42,27 +42,30 @@ export default function SignUp() {
             </p>
             <div className={styles.countdown__map}>
               {/* If you're choosing to make this timer dynamic, have it countdown from the date you set above */}
-              {countdown_data.map((count) => (
-                <Countdown
-                  key={count.id}
-                  number={count.number}
-                  unit={count.unit}
-                  color="blue"
-                />
-              ))}
+              <Countdown color="blue" />
             </div>
-
-            {/* <div className={styles.footer} /> */}
           </section>
-          <section>
+          <section className="form-wrapper">
             <Form />
           </section>
+          <div className={styles.footer__signup} />
         </main>
+
         <style jsx>{`
           .countdown__color {
             span {
               background-color: var(--midblue);
             }
+          }
+
+          #signup {
+            width: 375px;
+          }
+
+          .form-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
         `}</style>
       </div>

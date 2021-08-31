@@ -1,7 +1,8 @@
-import Dropdown from "./Dropdown";
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import Dropdown from "./Dropdown";
 
-export default function SignList() {
+export default function SignList({ selected }) {
   const signup_list = ["Name", "Email Address", "Phone Number", "Company"];
   const items = [
     { id: 1, plan: "Basic Pack", price: "Free" },
@@ -19,7 +20,7 @@ export default function SignList() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formValues.name);
+    console.log(formErrors.name);
     setFormErrors(validate(formValues));
     setIsSubmitting(true);
   };
@@ -52,30 +53,58 @@ export default function SignList() {
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmitting) {
       submitForm();
+      console.log(formErrors.name);
     }
   }, [formErrors]);
 
   return (
     <form onSubmit={handleSubmit} className="signup" noValidate>
-      {signup_list.slice(0, 2).map((index) => (
+      <div className="cross">
         <input
-          key={index}
-          id={
-            `${index}` === "Name"
-              ? formErrors.name && "border--error"
-              : formErrors.email && "border--error"
-          }
-          name={`${index}` === "Name" ? "name" : "email"}
-          placeholder={`${index}`}
-          type={`${index}` === "Name" ? "text" : "email"}
-          className="border--error"
-          value={`${index}` === "Name" ? formValues.name : formValues.email}
+          id={formErrors.name && "border--error"}
+          name="name"
+          placeholder="Name"
+          type="text"
+          value={formValues.name}
           onChange={handleChange}
         />
-      ))}
+        {formErrors.name && (
+          <div className="cross--one">
+            <Image
+              priority
+              src="/assets/sign-up/icon-cross.svg"
+              width={20}
+              height={20}
+              alt="cross"
+            />
+          </div>
+        )}
+      </div>
+      <div className="cross">
+        <input
+          id={formErrors.email && "border--error"}
+          name="email"
+          placeholder="Email Address"
+          type="email"
+          value={formValues.email}
+          onChange={handleChange}
+        />
+
+        {formErrors.email && (
+          <div className="cross--two">
+            <Image
+              priority
+              src="/assets/sign-up/icon-cross.svg"
+              width={20}
+              height={20}
+              alt="cross"
+            />
+          </div>
+        )}
+      </div>
 
       <div className="signup__dropdown">
-        <Dropdown title="Basic Pack" subtitle={"Free"} items={items} />
+        <Dropdown option={items.plan} items={items} />
       </div>
       {signup_list.slice(2, 4).map((index) => (
         <input key={index} type="text" placeholder={`${index}`}></input>
@@ -88,7 +117,30 @@ export default function SignList() {
           color: var(--softred);
           border-bottom: 1px solid var(--softred);
         }
+
+        .cross {
+          display: flex;
+        }
+        .cross--one {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          right: 35px;
+          top: 42.5px;
+        }
+
+        .cross--two {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          right: 35px;
+          top: 112.5px;
+        }
+
         .signup {
+          background-color: var(--white);
           position: relative;
           display: flex;
           flex-direction: column;
@@ -102,7 +154,6 @@ export default function SignList() {
           .signup__dropdown {
             width: 100%;
             box-sizing: border-box;
-            border: 1px solid red;
           }
           input {
             width: 279px;
@@ -116,12 +167,15 @@ export default function SignList() {
             font-size: 16px;
             line-height: 28px;
             text-indent: 16px;
+
+            &:focus {
+              border-bottom: 2px solid var(--midblue);
+            }
           }
           span {
             font-weight: var(--header-font);
           }
           .signup__button {
-            /* position: absolute; */
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -134,7 +188,6 @@ export default function SignList() {
             margin-top: 20px;
             border-radius: 50px;
             cursor: pointer;
-            /* z-index: -1; */
             bottom: 10px;
             border: none;
             &:hover {

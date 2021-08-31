@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import onClickOutside from "react-onclickoutside";
-import { isNamedTupleMember } from "typescript";
+import Image from "next/image";
 
 function Dropdown({ title, subtitle, items, multiSelect = false }) {
   const [open, setOpen] = useState(false);
   const [selection, setSelection] = useState([]);
+  const [option, setOption] = useState({ plan: "Basic Pack", price: "Free" });
+
   const toggle = () => setOpen(!open);
   Dropdown.handleClickOutside = () => setOpen(false);
 
@@ -25,12 +27,22 @@ function Dropdown({ title, subtitle, items, multiSelect = false }) {
     }
   }
 
+  function handleChange(item) {
+    selection([item.plan]);
+    console.log(selection);
+  }
+
   function isItemInSelection(item) {
     if (selection.some((current) => current.id === item.id)) {
+      console.log(selection);
       return true;
     }
     return false;
   }
+
+  const handleSelectChange = (plan, price) => {
+    setValues({ ...selection, options: { plan, price } });
+  };
 
   return (
     <div className="dropdown">
@@ -43,25 +55,53 @@ function Dropdown({ title, subtitle, items, multiSelect = false }) {
       >
         <div className="dropdown-header__title">
           <p className="dropdown-header__title--bold">
-            <span>{title}</span>
-            {subtitle}
+            <span>{option.plan}</span>
+            {option.price}
           </p>
-          <div className="dropdown-header__action">
-            <p>{open ? "Close" : "Open"}</p>
+
+          <div>
+            <div
+              className={`dropdown-header__action ${
+                open ? "toggle-up" : "toggle-down"
+              }`}
+            >
+              <Image
+                priority
+                src="/assets/sign-up/icon-arrow-down.svg"
+                width={13}
+                height={8}
+                alt="arrow icon"
+              />
+            </div>
           </div>
         </div>
       </div>
       {open && (
-        <ul className="dropdown-list">
+        <ul id="fade" className="dropdown-list">
           {items.map((item) => (
-            <li className="dropdown-list__item" key={item.id}>
-              <button type="button" onClick={() => handleOnClick(item)}>
+            <li
+              className="dropdown-list__item"
+              key={item.id}
+              onClick={() => setOption({ plan: item.plan, price: item.price })}
+            >
+              <button
+                type="button"
+                onChange={handleSelectChange}
+                onClick={() => handleOnClick(item)}
+              >
                 <div>
                   <span>{item.plan}</span>
                   {item.price}
                 </div>
                 <span className="dropdown-list__item--select">
-                  {isItemInSelection(item) && "Selected"}
+                  {isItemInSelection(item) && (
+                    <Image
+                      src="/assets/sign-up/icon-check.svg"
+                      width={15}
+                      height={12}
+                      alt="icon check"
+                    />
+                  )}
                 </span>
               </button>
             </li>
@@ -84,11 +124,39 @@ function Dropdown({ title, subtitle, items, multiSelect = false }) {
           cursor: pointer;
           overflow: hidden;
 
+          #fade {
+            animation: fadeIn 0.2s ease-in-out;
+            transition: fadeOut 0.2s ease-in-out;
+
+            @keyframes fadeIn {
+              0% {
+                opacity: 0;
+                transform: translateY(-2rem);
+              }
+              100% {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+
+            @keyframes fadeOut {
+              0% {
+                opacity: 1;
+                transform: translateY(0);
+              }
+              100% {
+                opacity: 0;
+                transform: translateY(-2rem);
+              }
+            }
+          }
+
           ul {
             width: 279px;
             position: absolute;
             bottom: 35px;
             border-radius: 30px;
+            box-shadow: 2px 12px 12px 2px rgba(0, 0, 255, 0.2);
           }
           .dropdown-header__title {
             display: flex;
@@ -101,8 +169,24 @@ function Dropdown({ title, subtitle, items, multiSelect = false }) {
             }
           }
 
+          .dropdown-header__action {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            line-height: 1.75rem;
+            position: absolute;
+          }
+          .toggle-up {
+            transition: transform 200ms ease-in-out;
+            transform: rotate(180deg);
+          }
+          .toggle-down {
+            transition: transform 200ms ease-in-out;
+          }
+
           .dropdown-list__item {
             list-style-type: none;
+            transition: transform 200ms ease-in-out;
             z-index: 1;
 
             &:first-of-type {
@@ -115,6 +199,7 @@ function Dropdown({ title, subtitle, items, multiSelect = false }) {
             &:last-of-type > button {
               border-bottom-left-radius: 8px;
               border-bottom-right-radius: 8px;
+              border-bottom: none;
             }
             button {
               display: flex;
@@ -125,11 +210,12 @@ function Dropdown({ title, subtitle, items, multiSelect = false }) {
               font-weight: var(--header-font);
               padding: 15px 20px 15px 20px;
               border: 0;
-              border-bottom: 1px solid #ccc;
+              border-bottom: 1px solid var(--grey);
               width: 100%;
               width: 279px;
               height: 66px;
               background-color: var(--white);
+              align-items: center;
               justify-content: space-between;
 
               span {
@@ -141,7 +227,7 @@ function Dropdown({ title, subtitle, items, multiSelect = false }) {
               &:focus {
                 cursor: pointer;
                 font-weight: bold;
-                background-color: #ccc;
+                background-color: mix(white, grey, $weight: 80%);
               }
             }
 
@@ -161,7 +247,6 @@ function Dropdown({ title, subtitle, items, multiSelect = false }) {
             justify-content: space-between;
             cursor: pointer;
             width: 90%;
-            /* padding: 0 20px; */
             color: var(--grey);
             p {
               font-weight: var(--header-font);
@@ -174,7 +259,7 @@ function Dropdown({ title, subtitle, items, multiSelect = false }) {
 
           .dropdown__list {
             box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-            box-shadow: none;
+            /* box-shadow: none; */
             padding: 0;
             margin: 0;
             width: 100%;
@@ -191,3 +276,16 @@ const clickOutsideConfig = {
 };
 
 export default onClickOutside(Dropdown, clickOutsideConfig);
+
+const Plan = ({ val }) => {
+  switch (val) {
+    case "Basic Pack":
+      return "Basic Pack";
+    case "Pro Pack":
+      return "Pro Pack";
+    case "Ultimate Pack":
+      return "Ultimate Pack";
+    default:
+      return "Ultimate Pack";
+  }
+};

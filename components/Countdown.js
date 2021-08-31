@@ -1,65 +1,58 @@
-import { initializeClock } from "./initializeClock";
+import { useEffect, useState } from "react";
+import Clock from "./Clock";
 
-export default function Countdown({ number, unit, color }) {
-  const deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
-  // const initClock = initializeClock("count", deadline);
+export default function Countdown({ color }) {
+  const [timerDays, setTimerDays] = useState();
+  const [timerHours, setTimerHours] = useState();
+  const [timerMinutes, setTimerMinutes] = useState();
+  const [timerSeconds, setTimerSeconds] = useState();
+
+  let interval;
+
+  const startTimer = () => {
+    const countdownDate = new Date("December 30, 2021").getTime();
+    // const future = new Date();
+    // const futureDate = future.setDate(future.getDate() + 30);
+
+    interval = setInterval(() => {
+      const now = new Date().getTime();
+
+      const distance = countdownDate - now;
+
+      const days = Math.floor(distance / 86400000);
+      const hours = Math.floor((distance % 86400000) / 3600000);
+      const minutes = Math.floor((distance % 3600000) / 60000);
+      const seconds = Math.floor((distance % 60000) / 1000);
+
+      if (distance < 0) {
+        clearInterval(interval.current);
+      } else {
+        setTimerDays(days);
+        setTimerHours(hours);
+        setTimerMinutes(minutes);
+        setTimerSeconds(seconds);
+      }
+    });
+  };
+
+  useEffect(() => {
+    startTimer();
+  });
 
   return (
-    <div className="count">
-      <div className={`count__block ${color}`}>
-        <p>
-          <span className={unit}>{number} </span>
-          {unit}
-        </p>
-      </div>
+    <div className="timer-wrapper">
+      <Clock
+        timerDays={timerDays}
+        timerHours={timerHours}
+        timerMinutes={timerMinutes}
+        timerSeconds={timerSeconds}
+        color={color}
+      />
       <style jsx>{`
-        .count {
+        .timer-wrapper {
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          text-align: center;
-          margin: 18px 8px 0;
-
-          .blue {
-            background-color: mix(white, #829cff, $weight: 80%);
-            p {
-              span {
-                color: var(--midblue);
-              }
-            }
-          }
-
-          .grey {
-            background-color: var(--slategrey);
-            p {
-              span {
-                color: var(--white);
-              }
-            }
-          }
-
-          .count__block {
-            border-radius: 5px;
-            width: 72px;
-            height: 92px;
-
-            p {
-              margin-top: 16px;
-              flex-direction: column;
-              font-size: 12px;
-              font-weight: var(--header-font);
-              letter-spacing: inherit;
-              text-transform: inherit;
-              line-height: inherit;
-
-              span {
-                font-size: 32px;
-                font-weight: var(--header-font);
-                line-height: 48px;
-                padding-left: 0;
-              }
-            }
-          }
+          justify-content: center;
         }
       `}</style>
     </div>

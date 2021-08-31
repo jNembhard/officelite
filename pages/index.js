@@ -74,15 +74,7 @@ export default function Home() {
             Coming <span> 4 Nov 2021</span>
           </p>
           <div className={styles.countdown__map}>
-            {/* If you're choosing to make this timer dynamic, have it countdown from the date you set above */}
-            {countdown_data.map((count) => (
-              <Countdown
-                key={count.id}
-                number={count.number}
-                unit={count.unit}
-                color="grey"
-              />
-            ))}
+            <Countdown color="grey" />
           </div>
           <div>
             <Link href="/signup/sign-up">
