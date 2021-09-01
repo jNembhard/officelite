@@ -26,7 +26,7 @@ export default function SignUp() {
                 alt="bg-pattern"
               />
             </div>
-            <div className={styles.intro}>
+            <div id="intro" className={styles.intro__wrap}>
               <h1 className={styles.mod}>Work smarter. Save time.</h1>
               <p>
                 Easily manage your projects. Get on the list and receive in-app
@@ -52,9 +52,18 @@ export default function SignUp() {
         </main>
 
         <style jsx>{`
+          @import "./styles/mixins.scss";
           .countdown__color {
             span {
               background-color: var(--midblue);
+            }
+          }
+
+          #intro {
+            @include tablet {
+              display: flex;
+              flex-direction: column;
+              margin: 0;
             }
           }
 

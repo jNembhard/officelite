@@ -31,6 +31,7 @@ export default function Clock({
           </div>
         </section>
         <style jsx>{`
+          @import "./styles/mixins.scss";
           .timer-container {
             text-align: center;
             margin: 18px 8px 0;
@@ -69,11 +70,16 @@ export default function Clock({
                 section {
                   display: flex;
                   flex-direction: column;
-                  border-radius: 5px;
+                  border-radius: 10px;
                   width: 72px;
                   height: 92px;
                   margin-left: 7.5px;
                   margin-right: 7.5px;
+
+                  @include tablet {
+                    width: 100px;
+                    height: 128px;
+                  }
 
                   p {
                     margin-top: 16px;
@@ -82,12 +88,20 @@ export default function Clock({
                     letter-spacing: inherit;
                     text-transform: inherit;
                     line-height: inherit;
+
+                    @include tablet {
+                      font-size: 56px;
+                    }
                   }
                   span {
                     font-size: 12px;
                     font-weight: var(--header-font);
                     line-height: 28px;
                     padding-left: 0;
+
+                    @include tablet {
+                      font-size: 16px;
+                    }
                   }
                 }
               }

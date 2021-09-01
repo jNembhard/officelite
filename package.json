@@ -14,12 +14,12 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-onclickoutside": "^6.11.2",
+    "sass": "^1.38.2",
     "yup": "^0.32.9"
   },
   "devDependencies": {
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.0",
-    "node-sass": "^4.14.1",
     "styled-jsx-plugin-sass": "^1.0.0"
   }
 }

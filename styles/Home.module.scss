@@ -1,45 +1,119 @@
+@import "mixins";
+@include tablet;
+@include desktop;
+
 .home {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
+  @include tablet {
+    overflow: hidden;
+    position: relative;
+    margin-top: -110px;
+  }
+
   .header__Image2 {
     z-index: 1;
     margin-top: -160px;
-    overflow: hidden;
+
+    @include tablet {
+      position: absolute;
+      display: flex;
+      margin: 0 -293px 196px 395px;
+    }
   }
 
-  .intro {
+  .intro__wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0 24px 0;
+    margin: 0 24px 104px;
     line-height: 26px;
 
+    @include tablet {
+      flex-direction: row-reverse;
+      width: 100%;
+      margin-bottom: 0;
+    }
+
     .intro__image {
-      margin-top: -80px;
       margin: -80px 80px 64px;
+      @include tablet {
+        position: absolute;
+        margin: inherit;
+        margin: 225px 40px 159px 447px;
+        width: 281px;
+        align-items: right;
+        z-index: 1;
+      }
     }
     .mod {
       margin-top: -80px;
     }
 
-    h1 {
+    .intro__home {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      margin-bottom: 24px;
-    }
 
-    p {
-      text-align: center;
-      line-height: 26px;
+      @include tablet {
+        text-align: left;
+        align-items: left;
+        margin: 208px 39px 140px 39px;
+      }
+
+      h1 {
+        margin-bottom: 24px;
+        @include tablet {
+          margin-right: 325px;
+        }
+      }
+
+      p {
+        line-height: 26px;
+        @include tablet {
+          margin-right: 310px;
+        }
+      }
+      .button__wrapper {
+        @include tablet {
+          display: flex;
+          align-items: left;
+          margin-left: 0;
+          margin-right: 480px;
+        }
+        .home__button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 171px;
+          height: 56px;
+          background-color: var(--midblue);
+          color: var(--white);
+          margin-top: 24px;
+          border-radius: 60px;
+          cursor: pointer;
+          margin-bottom: 100px;
+          font-weight: var(--header-font);
+          @include tablet {
+            margin-bottom: 0;
+          }
+
+          &:hover {
+            background-color: var(--softblue);
+          }
+        }
+      }
     }
   }
-}
 
-.p__mod {
-  color: var(--slategrey);
+  .p__mod {
+    color: var(--slategrey);
+  }
 }
 
 .card {
@@ -48,26 +122,6 @@
   align-items: center;
   justify-content: center;
 }
-
-.home__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 171px;
-  height: 56px;
-  background-color: var(--midblue);
-  color: var(--white);
-  margin-top: 24px;
-  border-radius: 60px;
-  cursor: pointer;
-  margin-bottom: 100px;
-  font-weight: var(--header-font);
-
-  &:hover {
-    background-color: var(--softblue);
-  }
-}
-
 .countdown {
   display: flex;
   flex-direction: column;
@@ -129,6 +183,12 @@
     background-position: center 132px;
     background-repeat: no-repeat;
     z-index: -1;
+  }
+
+  @include tablet {
+    &:after {
+      height: 946px;
+    }
   }
 }
 

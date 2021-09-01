@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+@import "mixins";
 
 html,
 body {
@@ -12,15 +13,18 @@ body {
 }
 
 header {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   top: 46px;
+  z-index: -2;
   .header__Image1 {
     position: absolute;
     top: -100px;
-    z-index: 1;
+  }
+
+  @include tablet {
+    margin: 72px 574px 0 39px;
   }
 }
 

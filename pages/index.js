@@ -29,28 +29,33 @@ export default function Home() {
             />
           </div>
 
-          <div className={styles.intro}>
+          <div className={styles.intro__wrap}>
             <div className={styles.intro__image}>
               <Image
                 priority
                 src="/assets/home/illustration-charts.svg"
                 width={171}
                 height={192}
+                layout="responsive"
                 alt="charts"
               />
             </div>
-            <h1 className={styles.home__1}>
-              A simple solution to complex tasks is coming soon
-            </h1>
+            <div className={styles.intro__home}>
+              <h1 className={styles.home__1}>
+                A simple solution to complex tasks is coming soon
+              </h1>
 
-            <p>
-              Say goodbye to inefficient juggling of multiple apps, teams, and
-              projects. Officelite is the new collaboration platform built with
-              an intuitive interface to improve productivity.
-            </p>
-            <Link href="/signup/sign-up">
-              <a className={styles.home__button}>Get Started</a>
-            </Link>
+              <p>
+                Say goodbye to inefficient juggling of multiple apps, teams, and
+                projects. Officelite is the new collaboration platform built
+                with an intuitive interface to improve productivity.
+              </p>
+              <div className={styles.button__wrapper}>
+                <Link href="/signup/sign-up">
+                  <a className={styles.home__button}>Get Started</a>
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 
