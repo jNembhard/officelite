@@ -1,6 +1,4 @@
 @import "mixins";
-@include tablet;
-@include desktop;
 
 .home {
   display: flex;
@@ -9,6 +7,7 @@
   align-items: center;
   justify-content: center;
   margin: 0;
+  overflow-x: hidden;
 
   @include tablet {
     margin-top: -110px;
@@ -46,6 +45,8 @@
     justify-content: center;
     margin: 0 24px 104px;
     line-height: 26px;
+    position: relative;
+    overflow: hidden;
 
     @include tablet {
       flex-direction: row-reverse;
@@ -86,67 +87,75 @@
         margin: 208px 39px 140px 39px;
 
         @include desktop {
-          margin: 174px 735px 255px 165px;
+          margin: 174px 295px 255px 0;
         }
       }
-
-      h1 {
-        margin-bottom: 24px;
+      .intro__home_container {
         @include tablet {
-          margin-right: 340px;
-          font-size: 40px;
-          @include desktop {
-            margin-right: 127px;
-            font-size: 56px;
-            line-height: 64px;
+          margin-right: 330px;
+          @include laptop {
+            margin-right: 460px;
+            width: 340px;
+            @include desktop {
+              margin-right: 325px;
+              width: 640px;
+            }
           }
         }
-      }
-
-      p {
-        line-height: 26px;
-        @include tablet {
-          margin-right: 310px;
-          font-size: 16px;
-
-          @include desktop {
-            margin-right: 80px;
-            font-size: 18px;
-            line-height: 28px;
-          }
-        }
-      }
-      .button__wrapper {
-        @include tablet {
-          display: flex;
-          align-items: left;
-          margin-left: -30px;
-          margin-right: 480px;
-          text-align: left;
-
-          @include desktop {
-            margin-left: 0;
-          }
-        }
-        .home__button {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          margin-top: 24px;
-          margin-bottom: 100px;
-          width: 171px;
-          height: 56px;
-          background-color: var(--midblue);
-          color: var(--white);
-          border-radius: 60px;
-          cursor: pointer;
-          font-weight: var(--header-font);
+        h1 {
+          margin-bottom: 24px;
           @include tablet {
-            margin-bottom: 0;
+            margin-right: 0;
+            font-size: 40px;
+            @include desktop {
+              margin-right: 100px;
+              font-size: 56px;
+              line-height: 64px;
+            }
           }
+        }
 
-          &:hover {
-            background-color: var(--softblue);
+        p {
+          line-height: 26px;
+          @include tablet {
+            margin-right: 10px;
+            font-size: 16px;
+
+            @include desktop {
+              margin-right: 80px;
+              font-size: 18px;
+              line-height: 28px;
+            }
+          }
+        }
+        .button__wrapper {
+          @include tablet {
+            display: flex;
+            text-align: left;
+
+            @include desktop {
+              margin-left: 0;
+            }
+          }
+          .home__button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 24px;
+            width: 171px;
+            height: 56px;
+            background-color: var(--midblue);
+            color: var(--white);
+            border-radius: 60px;
+            cursor: pointer;
+            font-weight: var(--header-font);
+            @include tablet {
+              margin-bottom: 0;
+            }
+
+            &:hover {
+              background-color: var(--softblue);
+            }
           }
         }
       }
@@ -166,6 +175,7 @@
 
   @include desktop {
     flex-direction: row;
+    margin-bottom: -200px;
   }
 }
 .countdown {

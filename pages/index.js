@@ -4,7 +4,6 @@ import Link from "next/link";
 import Card from "../components/Card";
 import card_data from "../components/card_data";
 import Countdown from "../components/Countdown";
-import countdown_data from "../components/countdown_data";
 import Header from "../components/Header";
 import styles from "../styles/Home.module.scss";
 
@@ -16,7 +15,9 @@ export default function Home() {
         <meta name="description" content="Officelite coming soon" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
+      <header>
+        <Header />
+      </header>
       <main>
         <section className={styles.home}>
           <div className={styles.header__backhero}>
@@ -42,19 +43,21 @@ export default function Home() {
               />
             </div>
             <div className={styles.intro__home}>
-              <h1 className={styles.home__1}>
-                A simple solution to complex tasks is coming soon
-              </h1>
+              <div className={styles.intro__home_container}>
+                <h1 className={styles.home__1}>
+                  A simple solution to complex tasks is coming soon
+                </h1>
 
-              <p>
-                Say goodbye to inefficient juggling of multiple apps, teams, and
-                projects. Officelite is the new collaboration platform built
-                with an intuitive interface to improve productivity.
-              </p>
-              <div className={styles.button__wrapper}>
-                <Link href="/signup/sign-up">
-                  <a className={styles.home__button}>Get Started</a>
-                </Link>
+                <p>
+                  Say goodbye to inefficient juggling of multiple apps, teams,
+                  and projects. Officelite is the new collaboration platform
+                  built with an intuitive interface to improve productivity.
+                </p>
+                <div className={styles.button__wrapper}>
+                  <Link href="/signup/sign-up">
+                    <a className={styles.home__button}>Get Started</a>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -75,10 +78,9 @@ export default function Home() {
         </section>
 
         <section className={styles.countdown}>
-          {/*If you're choosing to make this date dynamic, set it to 30 days in the future from the moment the visitor views the page */}
           <div className={styles.countdown__container}>
             <p className={styles.countdown__container__paragraph}>
-              Coming <span> 4 Nov 2021</span>
+              Coming <span> 30 Dec 2021</span>
             </p>
             <div className={styles.countdown__map}>
               <Countdown color="grey" />

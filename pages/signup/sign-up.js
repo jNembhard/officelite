@@ -4,7 +4,6 @@ import Image from "next/image";
 import Header from "../../components/Header";
 import styles from "../../styles/Signup.module.scss";
 import Countdown from "../../components/Countdown";
-import countdown_data from "../../components/countdown_data";
 import Form from "../../components/Form";
 
 export default function SignUp() {
@@ -14,8 +13,10 @@ export default function SignUp() {
         <Head>
           <title>Officelite Sign Up</title>
         </Head>
-        <Header />
-        <main>
+        <header>
+          <Header />
+        </header>
+        <main id="main">
           <section className={styles.home}>
             <div className={styles.header__Image2}>
               <Image
@@ -34,21 +35,22 @@ export default function SignUp() {
                 final development and getting ready for official launch soon.
               </p>
             </div>
-          </section>
-          <section className={styles.countdown}>
-            {/*If you're choosing to make this date dynamic, set it to 30 days in the future from the moment the visitor views the page */}
-            <p className={styles.p__mod}>
-              Coming <span> 4 Nov 2021</span>
-            </p>
-            <div className={styles.countdown__map}>
-              {/* If you're choosing to make this timer dynamic, have it countdown from the date you set above */}
-              <Countdown color="blue" />
+
+            <div className={styles.countdown}>
+              <p id="counter" className={styles.p__mod}>
+                Coming <span> 30 Dec 2021</span>
+              </p>
+              <div id="counter-map" className={styles.countdown__map}>
+                <Countdown color="blue" />
+              </div>
             </div>
           </section>
-          <section className="form-wrapper">
+          <section id="form" className={styles.form}>
             <Form />
           </section>
-          <div className={styles.footer} />
+          <section className={styles.footer}>
+            <div className={styles.footer__container} />
+          </section>
         </main>
 
         <style jsx>{`
@@ -67,14 +69,28 @@ export default function SignUp() {
             }
           }
 
-          #signup {
-            width: 375px;
+          #counter {
+            @include desktop {
+              margin-right: 170px;
+            }
           }
 
-          .form-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+          #form {
+            @include landscape {
+              position: relative;
+              overflow-x: hidden;
+            }
+          }
+
+          #main {
+            @include desktop {
+              display: flex;
+              bottom: -200px;
+            }
+          }
+
+          #signup {
+            width: 375px;
           }
         `}</style>
       </div>

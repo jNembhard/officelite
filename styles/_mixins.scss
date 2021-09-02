@@ -1,5 +1,6 @@
-$screen-md-min: 768px;
-$screen-lg-min: 1440px;
+$screen-md-min: 767px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1440px;
 
 @mixin tablet {
   @media (min-width: #{$screen-md-min}) {
@@ -8,7 +9,19 @@ $screen-lg-min: 1440px;
 }
 
 @mixin desktop {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+@mixin laptop {
   @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+@mixin landscape {
+  @media (min-width: #{$screen-md-min}) and (orientation:landscape) {
     @content;
   }
 }

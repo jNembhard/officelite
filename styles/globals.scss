@@ -7,6 +7,24 @@ body {
   font-family: "Kumbh Sans", sans-serif;
   font-weight: var(--paragraph-font);
   overflow-x: hidden;
+  position: relative;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+
+  @include tablet {
+    position: inherit;
+    @include desktop {
+      position: inherit;
+    }
+  }
+
+  @include landscape {
+    overflow-x: inherit;
+    overflow-x: none;
+
+    position: absolute;
+  }
 
   p {
     color: var(--grey);
@@ -21,7 +39,8 @@ header {
   z-index: -2;
 
   @include tablet {
-    margin: 72px 574px 0 39px;
+    margin-left: 39px;
+    justify-content: flex-start;
 
     @include desktop {
       margin: 81px 1120px 174px 165px;

@@ -1,6 +1,4 @@
 @import "mixins";
-@include tablet;
-@include desktop;
 
 .home {
   display: flex;
@@ -8,16 +6,22 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin-top: -80px;
 
   @include tablet {
     overflow: hidden;
-
     margin: 104px 98px 40px;
 
     p {
       margin-top: 24px;
       font-size: 16px;
       line-height: 26px;
+    }
+
+    @include desktop {
+      margin: -100px 0px 300px 155px;
+      align-items: left;
+      width: 540px;
     }
   }
 
@@ -44,27 +48,47 @@
       width: 100%;
       margin-bottom: 0;
       border: 2px solid transparent;
+
+      @include desktop {
+        margin: 20px 200px;
+      }
     }
 
     .mod {
       margin-top: -80px;
+
       @include tablet {
         margin-top: 0;
         font-size: 40px;
         line-height: 28px;
+
+        @include desktop {
+          font-size: 56px;
+          line-height: 64px;
+          text-align: left;
+        }
       }
+    }
+
+    .p__mod {
+      color: var(--midblue);
+      align-items: left;
+      margin-left: 50px;
     }
 
     .intro__paragraph {
       @include tablet {
         font-size: 16px;
         line-height: 26px;
+
+        @include desktop {
+          font-size: 18px;
+          line-height: 28px;
+          margin-bottom: 40px;
+          text-align: left;
+        }
       }
     }
-  }
-
-  .p__mod {
-    color: var(--slategrey);
   }
 }
 
@@ -75,6 +99,10 @@
   justify-content: center;
   position: relative;
 
+  @include desktop {
+    margin-right: 82px;
+  }
+
   p {
     display: inline-flex;
     align-items: center;
@@ -84,11 +112,18 @@
     letter-spacing: 5px;
     text-transform: uppercase;
     line-height: 48px;
+
+    @include desktop {
+      font-size: 18px;
+      line-height: 28px;
+      text-align: left;
+    }
     span {
       color: var(--midblue);
       padding-left: 5px;
     }
   }
+
   .countdown__map {
     display: flex;
     align-items: center;
@@ -100,25 +135,62 @@
   }
 }
 
-.footer {
-  &:after {
-    content: "";
-    overflow: hidden;
-    position: absolute;
-    bottom: -40rem;
-    left: 0;
-    right: 0;
-    height: 320px;
-    background-color: var(--darkgrey);
-    background-image: url("/assets/home/bg-pattern-footer.svg");
-    background-size: 75rem;
-    background-position: center -25.25rem;
-    background-repeat: no-repeat;
-    z-index: -2;
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+  position: relative;
+  overflow: hidden;
 
-    @include tablet {
-      height: 380px;
-      bottom: -16rem;
+  @include landscape {
+    margin-bottom: -150px;
+    // border: 1px solid red;
+  }
+
+  @include desktop {
+    margin: -120px 145px 279px 100px;
+  }
+}
+
+.footer {
+  // position: relative;
+  // overflow-y: none;
+  .footer__container {
+    &:after {
+      content: "";
+      overflow: hidden;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 320px;
+      background-color: var(--darkgrey);
+      background-image: url("/assets/home/bg-pattern-footer.svg");
+      background-size: 75rem;
+      background-position: center -25.25rem;
+      background-repeat: no-repeat;
+      z-index: -1;
+
+      @include tablet {
+        height: 380px;
+        bottom: -16rem;
+
+        @include desktop {
+          align-items: right;
+          top: 0;
+          bottom: 0;
+          width: 420px;
+          height: 100vh;
+          left: inherit;
+          overflow: hidden;
+          background-position: center -10.25rem;
+          background-position-x: -59rem;
+          background-size: 140rem;
+          transform: rotate(180deg);
+          position: fixed;
+        }
+      }
     }
   }
 }

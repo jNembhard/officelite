@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Dropdown from "./Dropdown";
 
 export default function SignList({ selected }) {
@@ -109,9 +110,11 @@ export default function SignList({ selected }) {
       {signup_list.slice(2, 4).map((index) => (
         <input key={index} type="text" placeholder={`${index}`}></input>
       ))}
-      <button type="submit" className="signup__button">
-        Get on the list
-      </button>
+      <Link href="/">
+        <a type="submit" className="signup__button">
+          Get on the list
+        </a>
+      </Link>
       <style jsx>{`
         @import "./styles/mixins.scss";
         #border--error {
@@ -167,6 +170,10 @@ export default function SignList({ selected }) {
             width: 445px;
             height: 508px;
             align-items: center;
+
+            @include desktop {
+              box-shadow: 5px 10px hsla(0deg, 0%, 0%, 0.1);
+            }
           }
           .signup__dropdown {
             width: 100%;
@@ -218,6 +225,7 @@ export default function SignList({ selected }) {
             cursor: pointer;
             bottom: 10px;
             border: none;
+
             &:hover {
               background-color: var(--softblue);
             }

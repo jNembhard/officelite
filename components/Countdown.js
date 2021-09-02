@@ -11,7 +11,8 @@ export default function Countdown({ color }) {
 
   const startTimer = () => {
     const countdownDate = new Date("December 30, 2021").getTime();
-    // const future = new Date();
+    // const today = new Date();
+    // const future = new Date(today).getTime();
     // const futureDate = future.setDate(future.getDate() + 30);
 
     interval = setInterval(() => {
