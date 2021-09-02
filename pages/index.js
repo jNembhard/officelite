@@ -19,18 +19,19 @@ export default function Home() {
       <Header />
       <main>
         <section className={styles.home}>
-          <div className={styles.header__Image2}>
+          <div className={styles.header__backhero}>
             <Image
               priority
               src="/assets/home/bg-pattern-header.svg"
               height={458}
               width={458}
               alt="bg-pattern"
+              layout="responsive"
             />
           </div>
 
           <div className={styles.intro__wrap}>
-            <div className={styles.intro__image}>
+            <div className={styles.intro__illustration}>
               <Image
                 priority
                 src="/assets/home/illustration-charts.svg"
@@ -75,11 +76,13 @@ export default function Home() {
 
         <section className={styles.countdown}>
           {/*If you're choosing to make this date dynamic, set it to 30 days in the future from the moment the visitor views the page */}
-          <p>
-            Coming <span> 4 Nov 2021</span>
-          </p>
-          <div className={styles.countdown__map}>
-            <Countdown color="grey" />
+          <div className={styles.countdown__container}>
+            <p className={styles.countdown__container__paragraph}>
+              Coming <span> 4 Nov 2021</span>
+            </p>
+            <div className={styles.countdown__map}>
+              <Countdown color="grey" />
+            </div>
           </div>
           <div>
             <Link href="/signup/sign-up">

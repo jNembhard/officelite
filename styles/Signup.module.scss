@@ -1,0 +1,124 @@
+@import "mixins";
+@include tablet;
+@include desktop;
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  @include tablet {
+    overflow: hidden;
+
+    margin: 104px 98px 40px;
+
+    p {
+      margin-top: 24px;
+      font-size: 16px;
+      line-height: 26px;
+    }
+  }
+
+  .header__Image2 {
+    z-index: 1;
+    margin-top: -160px;
+
+    @include tablet {
+      display: none;
+      margin: inherit;
+    }
+  }
+
+  .intro__wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 24px 104px;
+    line-height: 26px;
+
+    @include tablet {
+      flex-direction: row-reverse;
+      width: 100%;
+      margin-bottom: 0;
+      border: 2px solid transparent;
+    }
+
+    .mod {
+      margin-top: -80px;
+      @include tablet {
+        margin-top: 0;
+        font-size: 40px;
+        line-height: 28px;
+      }
+    }
+
+    .intro__paragraph {
+      @include tablet {
+        font-size: 16px;
+        line-height: 26px;
+      }
+    }
+  }
+
+  .p__mod {
+    color: var(--slategrey);
+  }
+}
+
+.countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  p {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: var(--header-font);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    line-height: 48px;
+    span {
+      color: var(--midblue);
+      padding-left: 5px;
+    }
+  }
+  .countdown__map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .countdown__color {
+      background-color: var(--softblue);
+    }
+  }
+}
+
+.footer {
+  &:after {
+    content: "";
+    overflow: hidden;
+    position: absolute;
+    bottom: -40rem;
+    left: 0;
+    right: 0;
+    height: 320px;
+    background-color: var(--darkgrey);
+    background-image: url("/assets/home/bg-pattern-footer.svg");
+    background-size: 75rem;
+    background-position: center -25.25rem;
+    background-repeat: no-repeat;
+    z-index: -2;
+
+    @include tablet {
+      height: 380px;
+      bottom: -16rem;
+    }
+  }
+}

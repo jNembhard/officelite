@@ -18,7 +18,7 @@ export default function Card({ plan, price, description, benefits, number }) {
         </div>
       </div>
 
-      <div>
+      <div className="card__button">
         <Link href="/signup/sign-up">
           <a className="button">Try for Free</a>
         </Link>
@@ -43,10 +43,21 @@ export default function Card({ plan, price, description, benefits, number }) {
             margin: 24px 32px;
           }
 
+          @include desktop {
+            width: 350px;
+            height: 508px;
+            text-align: center;
+            margin: 82px 15px;
+          }
+
           h3 {
             margin: 40px 0;
             @include tablet {
               margin: 48px 0 0 48px;
+            }
+
+            @include desktop {
+              margin: 40px 0;
             }
           }
 
@@ -57,15 +68,24 @@ export default function Card({ plan, price, description, benefits, number }) {
             @include tablet {
               margin: 16px 30px 24px 48px;
             }
+
+            @include desktop {
+              margin: 0 0 8px 0;
+            }
           }
 
           p {
             font-size: 16px;
             margin-bottom: 56px;
             color: var(--slategrey);
+            line-height: 28px;
             @include tablet {
               margin-left: 48px;
               margin-bottom: 24px;
+            }
+
+            @include desktop {
+              margin: 0 48px 56px;
             }
           }
 
@@ -74,9 +94,15 @@ export default function Card({ plan, price, description, benefits, number }) {
               margin-top: 86px;
               margin-left: 175px;
             }
+            @include desktop {
+              margin: inherit;
+            }
             ul {
               @inclued tablet {
                 margin: 0 20px 0 140px;
+              }
+              @include desktop {
+                /* margin: inherit; */
               }
               li {
                 list-style-type: none;
@@ -95,7 +121,12 @@ export default function Card({ plan, price, description, benefits, number }) {
               flex-direction: row;
               justify-content: inherit;
               align-items: inherit;
-              /* justify-content: space-between; */
+            }
+
+            @include desktop {
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
             }
 
             .card-header__container {
@@ -105,14 +136,15 @@ export default function Card({ plan, price, description, benefits, number }) {
 
         .bg--white {
           background-color: var(--white);
+          .card__button {
+            .button {
+              background-color: mix($white, $midblue, $weight: 80%);
+              color: var(--midblue);
+              filter: opacity(100%);
 
-          .button {
-            background-color: mix($white, $midblue, $weight: 80%);
-            color: var(--midblue);
-            filter: opacity(100%);
-
-            &:hover {
-              background-color: mix($white, $midblue, $weight: 60%);
+              &:hover {
+                background-color: mix($white, $midblue, $weight: 60%);
+              }
             }
           }
         }
@@ -136,34 +168,49 @@ export default function Card({ plan, price, description, benefits, number }) {
             flex-direction: column;
             align-items: left;
             background-position: right -18rem;
-            background-position-x: right -32rem;
+            background-position-x: -20rem;
           }
 
-          .button {
-            background-color: var(--white);
-            color: var(--midblue);
+          @include desktop {
+            align-items: center;
+            background-position: center -24rem;
+          }
+          .card__button {
+            .button {
+              background-color: var(--white);
+              color: var(--midblue);
 
-            &:hover {
-              color: var(--softblue);
+              &:hover {
+                color: var(--softblue);
+              }
             }
           }
         }
 
-        .button {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 171px;
-          height: 56px;
-          margin-top: 24px;
-          background-color: var(--softblue);
-          color: var(--white);
-          border-radius: 40px;
-          cursor: pointer;
-          font-weight: var(--header-font);
+        .card__button {
+          @include desktop {
+            margin-top: 32px;
+          }
+          .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 171px;
+            height: 56px;
+            margin-top: 24px;
+            background-color: var(--softblue);
+            color: var(--white);
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: var(--header-font);
 
-          @include tablet {
-            margin: 0 48px 48px;
+            @include tablet {
+              margin: 0 48px 48px;
+            }
+
+            @include desktop {
+              margin: 0 90px 40px;
+            }
           }
         }
       `}</style>

@@ -89,7 +89,7 @@ function Dropdown({ title, subtitle, items, multiSelect = false }) {
                 onChange={handleSelectChange}
                 onClick={() => handleOnClick(item)}
               >
-                <div>
+                <div className="dropdown-list__chosen">
                   <span>{item.plan}</span>
                   {item.price}
                 </div>
@@ -110,6 +110,7 @@ function Dropdown({ title, subtitle, items, multiSelect = false }) {
       )}
 
       <style jsx>{`
+        @import "./styles/mixins.scss";
         .dropdown {
           width: 279px;
           height: 45px;
@@ -123,6 +124,15 @@ function Dropdown({ title, subtitle, items, multiSelect = false }) {
           text-indent: 16px;
           cursor: pointer;
           overflow: hidden;
+
+          &:hover,
+          &:focus {
+            border-bottom: 2px solid var(--midblue);
+          }
+
+          @include tablet {
+            width: 360px;
+          }
 
           #fade {
             animation: fadeIn 0.2s ease-in-out;
@@ -157,6 +167,10 @@ function Dropdown({ title, subtitle, items, multiSelect = false }) {
             bottom: 35px;
             border-radius: 30px;
             box-shadow: 2px 12px 12px 2px rgba(0, 0, 255, 0.2);
+
+            @include tablet {
+              box-shadow: 20px 12px 12px 12px rgba(0, 0, 255, 0.2);
+            }
           }
           .dropdown-header__title {
             display: flex;
@@ -172,7 +186,7 @@ function Dropdown({ title, subtitle, items, multiSelect = false }) {
           .dropdown-header__action {
             display: flex;
             align-items: center;
-            padding: 1rem 0;
+            padding: 0.75rem 0;
             line-height: 1.75rem;
             position: absolute;
           }
@@ -218,6 +232,10 @@ function Dropdown({ title, subtitle, items, multiSelect = false }) {
               align-items: center;
               justify-content: space-between;
 
+              @include tablet {
+                width: 360px;
+              }
+
               span {
                 margin-right: 7px;
                 color: var(--slategrey);
@@ -259,11 +277,14 @@ function Dropdown({ title, subtitle, items, multiSelect = false }) {
 
           .dropdown__list {
             box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-            /* box-shadow: none; */
+
             padding: 0;
             margin: 0;
             width: 100%;
             margin-top: 30px;
+            @include tablet {
+              border: 1px solid var(--grey);
+            }
           }
         }
       `}</style>

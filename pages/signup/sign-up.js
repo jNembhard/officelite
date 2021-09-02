@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "../../components/Header";
-import styles from "../../styles/Home.module.scss";
+import styles from "../../styles/Signup.module.scss";
 import Countdown from "../../components/Countdown";
 import countdown_data from "../../components/countdown_data";
 import Form from "../../components/Form";
@@ -28,7 +28,7 @@ export default function SignUp() {
             </div>
             <div id="intro" className={styles.intro__wrap}>
               <h1 className={styles.mod}>Work smarter. Save time.</h1>
-              <p>
+              <p className={styles.intro__paragraph}>
                 Easily manage your projects. Get on the list and receive in-app
                 perks available only to early subscribers. We are moving into
                 final development and getting ready for official launch soon.
@@ -48,7 +48,7 @@ export default function SignUp() {
           <section className="form-wrapper">
             <Form />
           </section>
-          <div className={styles.footer__signup} />
+          <div className={styles.footer} />
         </main>
 
         <style jsx>{`

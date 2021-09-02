@@ -113,6 +113,7 @@ export default function SignList({ selected }) {
         Get on the list
       </button>
       <style jsx>{`
+        @import "./styles/mixins.scss";
         #border--error {
           color: var(--softred);
           border-bottom: 1px solid var(--softred);
@@ -126,8 +127,13 @@ export default function SignList({ selected }) {
           display: flex;
           align-items: center;
           justify-content: center;
-          right: 35px;
           top: 42.5px;
+          right: 35px;
+
+          @include tablet {
+            top: 56.5px;
+            right: 60px;
+          }
         }
 
         .cross--two {
@@ -135,8 +141,13 @@ export default function SignList({ selected }) {
           display: flex;
           align-items: center;
           justify-content: center;
-          right: 35px;
           top: 112.5px;
+          right: 35px;
+
+          @include tablet {
+            top: 130.5px;
+            right: 60px;
+          }
         }
 
         .signup {
@@ -151,9 +162,21 @@ export default function SignList({ selected }) {
           margin: 64px 24px 27px;
           border-radius: 8px;
           box-shadow: 0 0 15px hsla(0deg, 0%, 0%, 0.1);
+
+          @include tablet {
+            width: 445px;
+            height: 508px;
+            align-items: center;
+          }
           .signup__dropdown {
             width: 100%;
             box-sizing: border-box;
+
+            @include tablet {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
           }
           input {
             width: 279px;
@@ -170,6 +193,11 @@ export default function SignList({ selected }) {
 
             &:focus {
               border-bottom: 2px solid var(--midblue);
+            }
+
+            @include tablet {
+              margin: 12px 0;
+              width: 360px;
             }
           }
           span {
@@ -192,6 +220,11 @@ export default function SignList({ selected }) {
             border: none;
             &:hover {
               background-color: var(--softblue);
+            }
+
+            @include tablet {
+              width: 360px;
+              height: 56px;
             }
           }
         }

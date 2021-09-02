@@ -5,23 +5,37 @@
 .home {
   display: flex;
   flex-direction: column;
+  position: relative;
   align-items: center;
   justify-content: center;
+  margin: 0;
 
   @include tablet {
-    overflow: hidden;
-    position: relative;
     margin-top: -110px;
+
+    @include desktop {
+      margin-top: -300px;
+      margin-left: 165px;
+    }
   }
 
-  .header__Image2 {
-    z-index: 1;
-    margin-top: -160px;
+  .header__backhero {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: -1;
+    width: 458px;
+    margin: -940px 20px 0;
 
     @include tablet {
-      position: absolute;
-      display: flex;
-      margin: 0 -293px 196px 395px;
+      margin: -164px -293px 196px 395px;
+      width: 666px;
+
+      @include desktop {
+        margin: -450px -390px 0 600px;
+        width: 1134px;
+        object-fit: cover;
+      }
     }
   }
 
@@ -39,8 +53,9 @@
       margin-bottom: 0;
     }
 
-    .intro__image {
-      margin: -80px 80px 64px;
+    .intro__illustration {
+      margin: 80px 80px 64px;
+      width: 171px;
       @include tablet {
         position: absolute;
         margin: inherit;
@@ -48,6 +63,11 @@
         width: 281px;
         align-items: right;
         z-index: 1;
+
+        @include desktop {
+          width: 475px;
+          margin: 213px 165px 0 800px;
+        }
       }
     }
     .mod {
@@ -64,12 +84,22 @@
         text-align: left;
         align-items: left;
         margin: 208px 39px 140px 39px;
+
+        @include desktop {
+          margin: 174px 735px 255px 165px;
+        }
       }
 
       h1 {
         margin-bottom: 24px;
         @include tablet {
-          margin-right: 325px;
+          margin-right: 340px;
+          font-size: 40px;
+          @include desktop {
+            margin-right: 127px;
+            font-size: 56px;
+            line-height: 64px;
+          }
         }
       }
 
@@ -77,27 +107,39 @@
         line-height: 26px;
         @include tablet {
           margin-right: 310px;
+          font-size: 16px;
+
+          @include desktop {
+            margin-right: 80px;
+            font-size: 18px;
+            line-height: 28px;
+          }
         }
       }
       .button__wrapper {
         @include tablet {
           display: flex;
           align-items: left;
-          margin-left: 0;
+          margin-left: -30px;
           margin-right: 480px;
+          text-align: left;
+
+          @include desktop {
+            margin-left: 0;
+          }
         }
         .home__button {
           display: inline-flex;
           align-items: center;
           justify-content: center;
+          margin-top: 24px;
+          margin-bottom: 100px;
           width: 171px;
           height: 56px;
           background-color: var(--midblue);
           color: var(--white);
-          margin-top: 24px;
           border-radius: 60px;
           cursor: pointer;
-          margin-bottom: 100px;
           font-weight: var(--header-font);
           @include tablet {
             margin-bottom: 0;
@@ -121,6 +163,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @include desktop {
+    flex-direction: row;
+  }
 }
 .countdown {
   display: flex;
@@ -128,27 +174,52 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  p {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: var(--header-font);
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    line-height: 48px;
-    span {
-      color: var(--midblue);
-      padding-left: 5px;
-    }
-  }
-  .countdown__map {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  text-align: center;
 
-    .countdown__color {
-      background-color: var(--softblue);
+  @include tablet {
+    margin-top: 100px;
+  }
+  @include desktop {
+    flex-direction: row;
+    text-align: left;
+  }
+  .countdown__container {
+    p {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: var(--header-font);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      line-height: 48px;
+      span {
+        color: var(--midblue);
+        padding-left: 5px;
+      }
+    }
+    .countdown__container__paragraph {
+      color: var(--white);
+      @include tablet {
+        text-align: center;
+      }
+      @include desktop {
+        text-indent: 20px;
+      }
+    }
+
+    @include desktop {
+      margin: 82px 0 91px 165px;
+    }
+
+    .countdown__map {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .countdown__color {
+        background-color: var(--softblue);
+      }
     }
   }
   .countdown__button {
@@ -166,6 +237,10 @@
     &:hover {
       background-color: var(--softblue);
     }
+
+    @include desktop {
+      margin: 142px 165px 151px 491px;
+    }
   }
 }
 
@@ -179,7 +254,7 @@
     height: 1248px;
     background-color: var(--darkgrey);
     background-image: url("/assets/home/bg-pattern-footer.svg");
-    background-size: cover;
+    // background-size: cover;
     background-position: center 132px;
     background-repeat: no-repeat;
     z-index: -1;
@@ -187,25 +262,18 @@
 
   @include tablet {
     &:after {
+      content: "";
       height: 946px;
+      background-position-y: -20rem;
     }
-  }
-}
 
-.footer__signup {
-  &:after {
-    content: "";
-    overflow: hidden;
-    position: absolute;
-    bottom: -20rem;
-    left: 0;
-    right: 0;
-    height: 320px;
-    background-color: var(--darkgrey);
-    background-image: url("/assets/home/bg-pattern-footer.svg");
-    background-size: 75rem;
-    background-position: center -25.25rem;
-    background-repeat: no-repeat;
-    z-index: -2;
+    @include desktop {
+      &:after {
+        content: "";
+        height: 603px;
+        background-position: center -37rem;
+        background-position-x: -43rem;
+      }
+    }
   }
 }
