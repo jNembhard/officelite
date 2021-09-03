@@ -12,8 +12,6 @@
   - [Continued development](#continued-development)
 - [Author](#author)
 
-**Note: Update table of contents**
-
 ## Overview
 
 ### The challenge
@@ -30,13 +28,11 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-**Note: Update screenshot**
+![Officelite Homepage](./public/Officelite-Screenshot.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Website URL: [Officelite](https://officelite-jnembhard.vercel.app/)
 
 ## My process
 
@@ -66,7 +62,9 @@ const now = new Date().getTime();
 const distance = countdownDate - now;
 ```
 
-See the problem here? Since Next.js is a framework built on top of React, futureDate is searching for a `setDate()` declaration in a predefined React Hook, but it does not exist. The function is already available as a function within `Date()`. This results in a TypeError. To avoid this, a better strategy would be to use the momentJS library available for React frameworks, or using TypeScript to better define types and avoid errors.
+See the problem here? Since Next.js is a framework built on top of React, futureDate is searching for a `setDate()` declaration in a predefined React Hook, but it does not exist. The function is already available as a method within `Date()`. This results in a TypeError.
+
+To avoid this, a better strategy would be to use the momentJS library available for React frameworks, or using TypeScript to better define types and avoid errors.
 
 The final result ended up looking more like this:
 
@@ -103,10 +101,6 @@ I also had the opportunity to improve my email validation from previous projects
 ### Continued development
 
 I've found with these projects that a mobile-first approach typically easier for me to implement, but it is important to be cautious with how how create sections. The easiest way is to create sections based on the largest layout and then design for mobile devices from there.
-
-### Useful resources
-
-**Note: Update resources**
 
 ## Author
 

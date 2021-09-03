@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import Dropdown from "./Dropdown";
 
-export default function SignList({ selected }) {
+export default function SignList() {
   const signup_list = ["Name", "Email Address", "Phone Number", "Company"];
   const items = [
     { id: 1, plan: "Basic Pack", price: "Free" },
@@ -56,10 +55,15 @@ export default function SignList({ selected }) {
       submitForm();
       console.log(formErrors.name);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formErrors]);
 
   return (
-    <form onSubmit={handleSubmit} className="signup" noValidate>
+    <form
+      onSubmit={handleSubmit}
+      className="signup"
+      autoComplete={"" + Math.random()}
+    >
       <div className="cross">
         <input
           id={formErrors.name && "border--error"}
@@ -68,6 +72,7 @@ export default function SignList({ selected }) {
           type="text"
           value={formValues.name}
           onChange={handleChange}
+          autoComplete={"" + Math.random()}
         />
         {formErrors.name && (
           <div className="cross--one">
@@ -86,7 +91,6 @@ export default function SignList({ selected }) {
           id={formErrors.email && "border--error"}
           name="email"
           placeholder="Email Address"
-          type="email"
           value={formValues.email}
           onChange={handleChange}
         />
@@ -108,13 +112,16 @@ export default function SignList({ selected }) {
         <Dropdown option={items.plan} items={items} />
       </div>
       {signup_list.slice(2, 4).map((index) => (
-        <input key={index} type="text" placeholder={`${index}`}></input>
+        <input
+          key={index}
+          type="text"
+          placeholder={`${index}`}
+          autoComplete={"" + Math.random()}
+        ></input>
       ))}
-      <Link href="/">
-        <a type="submit" className="signup__button">
-          Get on the list
-        </a>
-      </Link>
+      <button type="submit" className="signup__button">
+        Get on the list
+      </button>
       <style jsx>{`
         @import "./styles/mixins.scss";
         #border--error {

@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import onClickOutside from "react-onclickoutside";
 import Image from "next/image";
 
-function Dropdown({ title, subtitle, items, multiSelect = false }) {
+function Dropdown({ items, multiSelect = false }) {
   const [open, setOpen] = useState(false);
   const [selection, setSelection] = useState([]);
   const [option, setOption] = useState({ plan: "Basic Pack", price: "Free" });
@@ -124,10 +124,12 @@ function Dropdown({ title, subtitle, items, multiSelect = false }) {
           text-indent: 16px;
           cursor: pointer;
           overflow: hidden;
+          user-select: none;
 
           &:hover,
           &:focus {
             border-bottom: 2px solid var(--midblue);
+            outline: 0;
           }
 
           @include tablet {

@@ -8,9 +8,6 @@ body {
   font-weight: var(--paragraph-font);
   overflow-x: hidden;
   position: relative;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
 
   @include tablet {
     position: inherit;

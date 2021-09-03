@@ -43,7 +43,7 @@ export default function Clock({
                   color: var(--midblue);
                 }
                 span {
-                  color: var(--slategrey);
+                  color: var(--grey);
                 }
               }
             }

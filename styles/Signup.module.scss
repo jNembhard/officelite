@@ -18,7 +18,6 @@
       line-height: 26px;
     }
 
-    // margin: 206px 175px 100px 175px;
     @include desktop {
       margin: -100px 0 300px 155px;
       align-items: left;
@@ -51,10 +50,6 @@
       margin-bottom: 0;
       border: 2px solid transparent;
       @include laptop {
-        overflow: inherit;
-        p {
-          // width: 572px;
-        }
         @include desktop {
           margin: 20px 200px;
         }
@@ -155,7 +150,6 @@
 
   @include landscape {
     margin-bottom: -150px;
-    // border: 1px solid red;
   }
 
   @include desktop {
@@ -164,8 +158,6 @@
 }
 
 .footer {
-  // position: relative;
-  // overflow-y: none;
   .footer__container {
     &:after {
       content: "";
