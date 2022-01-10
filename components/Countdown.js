@@ -10,7 +10,7 @@ export default function Countdown({ color }) {
   let interval;
 
   const startTimer = () => {
-    const countdownDate = new Date("December 30, 2021").getTime();
+    const countdownDate = new Date("March 30, 2022").getTime();
     // const today = new Date();
     // const future = new Date(today).getTime();
     // const futureDate = future.setDate(future.getDate() + 30);
